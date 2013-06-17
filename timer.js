@@ -6,6 +6,8 @@ var Timer = function(params) {
 	var timeout = typeof params.timeout === 'undefined' ? 1000 : params.timeout;
 	var pauseMode = typeof params.pauseMode === 'undefined' ? false : params.pauseMode;
 	var passed = 0;
+	var compact = typeof params.compact === 'undefined' ? false : params.compact;	
+	var hidden = typeof params.hidden === 'undefined' ? false : params.hidden;	
 	
 	var done = params.done;
 	var pause = params.pause;
@@ -13,6 +15,8 @@ var Timer = function(params) {
 	var reset = params.reset;
 	
 	var run = function() {
+		if (hidden)
+			document.getElementById(self.id).setAttribute('style', 'display: none;');
 		document.getElementById(self.id).innerHTML = timeToStr(self.limit);
 		setTimeout(draw, timeout);
 	}
@@ -40,11 +44,16 @@ var Timer = function(params) {
 	}
 	
 	var formatTime = function(timeObj) {
-		return (timeObj.h < 10 ? '0' + timeObj.h : timeObj.h) +
-				':' +
-				(timeObj.m < 10 ? '0' + timeObj.m : timeObj.m) +
-				':' +
-				(timeObj.s < 10 ? '0' + timeObj.s : timeObj.s);
+		if (compact)
+			return (timeObj.m < 10 ? '0' + timeObj.m : timeObj.m) +
+					':' +
+					(timeObj.s < 10 ? '0' + timeObj.s : timeObj.s);
+		else
+			return (timeObj.h < 10 ? '0' + timeObj.h : timeObj.h) +
+					':' +
+					(timeObj.m < 10 ? '0' + timeObj.m : timeObj.m) +
+					':' +
+					(timeObj.s < 10 ? '0' + timeObj.s : timeObj.s);
 	}
 	
 	var draw = function() {
@@ -67,17 +76,20 @@ var Timer = function(params) {
 	this.pause = function() {
 		pauseMode = true;
 		pause();
+		return this;
 	}
 	
 	this.resume = function() {
 		pauseMode = false;
 		resume();
+		return this;
 	}
 	
 	this.reset = function() {
 		document.getElementById(self.id).innerHTML = timeToStr(self.limit);
 		passed = 0;
 		reset();
+		return this;
 	}
 	
 	run();
