@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<script src='timer.js'></script>
+	</head>
+	<body>
+		<div>
+			<div>Timer:</div>		
+			<div id="timer"></div>
+		</div>
+	</body>
+</html>
+<script>
+	$(function() {
+		window.mt = new Timer({
+			id: 'timer',
+			limit: 1200,
+			pauseMode: true,
+			done: function() {
+				console.log('Done');
+			},
+			pause: function() {
+				console.log('Pause');
+			},
+			resume: function() {
+				console.log('Resume');
+			},
+			reset: function() {
+				console.log('Reset');
+			}
+		});			
+		window.mt_ = new Timer({
+			id: 'timer_',
+			limit: 10,
+			pauseMode: false,
+			done: function() {
+				mt.resume();
+			}
+		});
+	});
+</script>
