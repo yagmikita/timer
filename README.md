@@ -1,0 +1,4 @@
+timer
+=====
+
+Simple javascript timer 
