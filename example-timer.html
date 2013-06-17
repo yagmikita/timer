@@ -11,25 +11,23 @@
 	</body>
 </html>
 <script>
-	$(function() {
-		window.mt = new Timer({
-			id: 'timer',			// html element id
-			limit: 1200,			// setting up timer for 20 minutes
-			compact: true,			// true - mm:ss, false - hh:mm:ss
-			hidden: true,			// hide timer element
-			pauseMode: true,		// start timer at once
-			done: function() {		// bind Done event
-				console.log('Done');
-			},
-			pause: function() {		// bind Pause event
-				console.log('Pause');
-			},
-			resume: function() {		// bind Resume event
-				console.log('Resume');
-			},
-			reset: function() {		// bind Reset event
-				console.log('Reset');
-			}
-		});
+	window.mt = new Timer({
+		id: 'timer',			// html element id
+		limit: 1200,			// setting up timer for 20 minutes
+		compact: true,			// true - mm:ss, false - hh:mm:ss
+		hidden: true,			// hide timer element
+		pauseMode: true,		// start timer at once
+		done: function() {		// bind Done event
+			console.log('Done');
+		},
+		pause: function() {		// bind Pause event
+			console.log('Pause');
+		},
+		resume: function() {		// bind Resume event
+			console.log('Resume');
+		},
+		reset: function() {		// bind Reset event
+			console.log('Reset');
+		}
 	});
 </script>
