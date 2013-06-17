@@ -13,19 +13,19 @@
 <script>
 	$(function() {
 		window.mt = new Timer({
-			id: 'timer',
-			limit: 1200,
-			pauseMode: true,
-			done: function() {
+			id: 'timer',			// html element id
+			limit: 1200,			// setting up timer for 20 minutes
+			pauseMode: false,		// start timer at once
+			done: function() {		// bind Done event
 				console.log('Done');
 			},
-			pause: function() {
+			pause: function() {		// bind Pause event
 				console.log('Pause');
 			},
-			resume: function() {
+			resume: function() {		// bind Resume event
 				console.log('Resume');
 			},
-			reset: function() {
+			reset: function() {		// bind Reset event
 				console.log('Reset');
 			}
 		});
