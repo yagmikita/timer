@@ -15,7 +15,9 @@
 		window.mt = new Timer({
 			id: 'timer',			// html element id
 			limit: 1200,			// setting up timer for 20 minutes
-			pauseMode: false,		// start timer at once
+			compact: true,			// true - mm:ss, false - hh:mm:ss
+			hidden: true,			// hide timer element
+			pauseMode: true,		// start timer at once
 			done: function() {		// bind Done event
 				console.log('Done');
 			},
